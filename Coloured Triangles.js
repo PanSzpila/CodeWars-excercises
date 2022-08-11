@@ -79,7 +79,6 @@ function triangle(row) {
   const arr = [];
 
   function ColorsToNumbers(row) {
-    // console.log("trigering ColorsToNumbers function");
     for (const color of row) {
       switch (color) {
         case "R":
@@ -97,10 +96,6 @@ function triangle(row) {
   }
 
   function createNewArr(currentArr) {
-    console
-      .log
-      // `trigering createNewArr function with input arr: ${currentArr}`
-      ();
     const newArr = [];
     function compareColors(A, B) {
       if (A === B) return A;
@@ -110,19 +105,16 @@ function triangle(row) {
     }
 
     for (let j = 0; j < currentArr.length - 1; j++) {
-      // console.log(`loop iteration ${j}`);
       newArr.push(compareColors(currentArr[j], currentArr[j + 1]));
-      console.log(`newArr === ${newArr}`);
     }
     if (newArr.length === 1) {
-      console.log(`ENDING createNewArr function with output num: ${newArr[0]}`);
-      return newArr[0];
+      output = newArr[0];
+      return;
     }
     createNewArr(newArr);
   }
 
   function numberToColor(num) {
-    console.log(`trigering numberTocolor function with input num: ${num}`);
     switch (num) {
       case -1:
         return "R";
@@ -134,8 +126,8 @@ function triangle(row) {
   }
 
   ColorsToNumbers(row);
-  let output = createNewArr(arr);
-  console.log(`output === ${output}`);
+  let output = null;
+  createNewArr(arr);
   return numberToColor(output);
 }
 
